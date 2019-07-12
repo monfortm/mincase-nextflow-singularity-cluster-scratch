@@ -27,19 +27,13 @@ process testProcess {
   ========================
   """.stripIndent()
 
-
-  println "scratch: ${task.scratch}"
-  println "container: ${task.container}"
   """
+  echo "hostname: "\$(hostname)
   echo "This is PWD : "$PWD
-  echo "This is \\PWD : "\$PWD
-  hostname
-  echo "PWD  :: $PWD"
-  echo "\\PWD :: \$PWD"
-  echo "pwd :: \$(pwd)"
-  echo "TMPDIR :: $TMPDIR"
-  echo "\\TMPDIR :: \$TMPDIR"
+  echo "This is \\PWD (escaped) : "\$PWD
+  echo "This is pwd (from subshell) : \$(pwd)"
+  echo "TMPDIR : $TMPDIR"
+  echo "\\TMPDIR (escaped) : \$TMPDIR"
   cat ${lorem_in} > lorem_out
-  sleep 400
   """
 }
